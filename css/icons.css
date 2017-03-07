@@ -72,3 +72,6 @@ Icon fonts for pages
 .icon-github::before {
 	content: "\e907";
 }
+.icon-mail4::before {
+	content: "\e908";
+}

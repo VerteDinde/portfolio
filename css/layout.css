@@ -1,0 +1,55 @@
+
+/*-------------
+Header
+--------------*/
+.site-header {
+  width: 100%;
+  background: #00B7AB;
+}
+
+.icon-menu {
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
+}
+
+.site-header h1 {
+  text-align: center;
+  margin: 0px auto;
+  padding: 20px 50px;
+}
+
+.site-header p {
+  text-align: center;
+  margin: 0px auto;
+}
+
+/*-------------
+Body
+--------------*/
+.article-body img {
+  margin: 10px auto;
+  display: inline-block;
+}
+
+/*-------------
+Footer
+--------------*/
+
+.site-footer {
+  width: 100%;
+  margin: 0px auto;
+  text-align: center; 
+  /*why does this work?*/
+}
+
+.social-list ul {
+  margin: 0px auto;
+}
+
+.social-list li {
+  margin: 10px auto;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+}
