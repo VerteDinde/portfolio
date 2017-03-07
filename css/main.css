@@ -1,6 +1,35 @@
 /*-------------
+Fonts
+--------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans|Rubik');
+@import url('https://fonts.googleapis.com/css?family=Arvo:400');
+
+/*-------------
 Body
 --------------*/
+body {
+  width: 100%;
+  margin: 0px auto;
+}
+
+h1 {
+  font-family: 'Arvo';
+}
+
+h2 {
+  font-family: 'Arvo';
+  border-bottom: 1px dashed #00B7AB;
+}
+
+p {
+  font-family: 'Open Sans';
+  line-height: 140%;
+}
+
+.article-body {
+  padding: 20px 50px;
+}
 
 .article-body img {
   max-width: 100%;
@@ -9,22 +38,49 @@ Body
 /*-------------
 Header
 --------------*/
-
 .site-header {
-  background: #FFEAAA;
+  width: 100%;
+  background: #00B7AB;
 }
 
 .icon-menu {
-    font-size: 50px;
+  text-align: center;
+  padding: 10px;
+  font-size: 30px;
 }
 
-/*-------------
-Navigation
---------------*/
+.site-header h1 {
+  text-align: center;
+  margin: 0px auto;
+  padding: 20px 50px;
+}
+
+.site-header p {
+  text-align: center;
+  margin: 0px auto;
+}
 
 /*-------------
 Footer
 --------------*/
+
+.site-footer {
+  width: 100%;
+  margin: 0px auto;
+  text-align: center; 
+  /*why does this work?*/
+}
+
+.social-list ul {
+  margin: 0px auto;
+}
+
+.social-list li {
+  margin: 10px auto;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+}
 
 /*-------------
 Link Styles
@@ -35,7 +91,7 @@ a, a:link, a:active {
 }
 
 a:hover, a:focus {
-  color: #29506D;
+  color: #00B7AB;
 }
 
 a:visited {

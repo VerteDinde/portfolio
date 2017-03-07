@@ -1,0 +1,40 @@
+/*-------------
+Navigation
+--------------*/
+
+.site-header ul {
+  display: none;
+  padding: 20px;
+  list-style: none;
+  text-align: center;
+}
+
+.main-nav:hover ul {
+  display: block;
+}
+
+.site-header li {
+  line-height: 140%;
+  font-family: 'Arvo';
+  font-size: 20px;
+  border-bottom: 1px dashed #ccc;
+}
+
+@media only screen and (min-width: 775px) {
+    .main-nav ul {
+        display: block;
+    }
+    .icon-menu {
+        display: none;
+    }
+    .main-nav ul li {
+        display: inline-block;
+        padding: 0px 20px;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .main-nav h1 {
+          padding: 20px 90px; 
+    }
+}
