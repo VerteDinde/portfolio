@@ -1,0 +1,52 @@
+/*-------------
+Fonts
+--------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans|Rubik');
+@import url('https://fonts.googleapis.com/css?family=Arvo:400');
+
+/*-------------
+Body
+--------------*/
+body {
+  width: 100%;
+  margin: 0px auto;
+}
+
+h1 {
+  font-family: 'Arvo';
+}
+
+h2 {
+  font-family: 'Arvo';
+  border-bottom: 1px dashed #00B7AB;
+}
+
+p {
+  font-family: 'Open Sans';
+  line-height: 140%;
+}
+
+.article-body {
+  padding: 20px 50px;
+}
+
+.article-body img {
+  max-width: 90%;
+}
+
+/*-------------
+Link Styles
+--------------*/
+a, a:link, a:active {
+  text-decoration: none;
+  color: #777;
+}
+
+a:visited {
+  color: #777;
+}
+
+a:hover, a:focus {
+  color: #00B7AB;
+}

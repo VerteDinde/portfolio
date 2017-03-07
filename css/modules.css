@@ -20,7 +20,19 @@ Navigation
   border-bottom: 1px dashed #ccc;
 }
 
-@media only screen and (min-width: 775px) {
+/*-------------
+Media Queries
+--------------*/
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width : 320px) {
+    .article-body img {
+        display: block;
+        width: 90%
+    }
+}
+
+@media only screen and (min-width: 768px) {
     .main-nav ul {
         display: block;
     }
@@ -30,6 +42,11 @@ Navigation
     .main-nav ul li {
         display: inline-block;
         padding: 0px 20px;
+    }
+    .article-body img {
+        margin: 10px auto;
+        display: inline-block;
+        width: 45%;
     }
 }
 
