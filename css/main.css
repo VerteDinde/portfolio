@@ -61,26 +61,14 @@ Header
 }
 
 /*-------------
-Navigation
---------------*/
-
-.site-header ul {
-  display: none;
-  padding: 20px;
-  list-style: none;
-  text-align: center;
-}
-
-.main-nav:hover ul {
-  display: block;
-}
-
-/*-------------
 Footer
 --------------*/
 
 .site-footer {
+  width: 100%;
   margin: 0px auto;
+  text-align: center; 
+  /*why does this work?*/
 }
 
 .social-list ul {
@@ -103,7 +91,7 @@ a, a:link, a:active {
 }
 
 a:hover, a:focus {
-  color: #29506D;
+  color: #00B7AB;
 }
 
 a:visited {
