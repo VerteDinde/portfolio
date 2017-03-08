@@ -21,6 +21,23 @@ Navigation
 }
 
 /*-------------
+Blog
+--------------*/
+
+.template {
+  display: none;
+}
+
+.byline {
+  color: #777;
+}
+
+.byline a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/*-------------
 Media Queries
 --------------*/
 
