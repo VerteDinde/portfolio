@@ -1,7 +1,6 @@
 /*-------------
 Navigation
 --------------*/
-
 .site-header ul {
   display: none;
   padding: 20px;
@@ -23,7 +22,7 @@ Navigation
 /*-------------
 Blog
 --------------*/
-
+/*removes original blog template; only new posts*/
 .template {
   display: none;
 }

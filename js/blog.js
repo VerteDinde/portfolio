@@ -19,15 +19,16 @@ function Post(blogPosts) {
 // Output: creating a new node and appending to DOM
 // REMEMBER: Remove class element before returning, or you'll be exponentially creating nodes
 Post.prototype.toHtml = function () {
-  var $newPost = $('article.template').clone();   // clones template node
-  $newPost.find('h3').text(this.title);
+  // clones template node; removes class, so we're not exponentially creating nodes
+  var $newPost = $('article.template').clone().removeClass('template');   
+  $newPost.find('h3:first').text(this.title);
   $newPost.attr('data-category', this.category);
-  $newPost.find('.byline address a').text(this.author);
-  $newPost.find('.byline address a').attr('href', this.authorUrl)
+  $newPost.attr('data-author', this.author);
+  $newPost.find('.byline a').text(this.author);
+  $newPost.find('.byline a').attr('href', this.authorUrl);
   $newPost.find('time[pubdate]').attr('title', this.publishedOn);
   $newPost.find('time').text(' | published ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago.');
   $newPost.find('.blog-body').html(this.body);
-  $newPost.removeClass('template');
   return $newPost;
 };
 
