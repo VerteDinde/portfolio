@@ -55,13 +55,26 @@ blogView.handleCategoryFilter = function() {
 //Output:
 blogView.handleMainNav = function() {
   $('.main-nav').on('click', '.tab', function(){
-    $('.tab-content').hide('fast');
+    $('.tab-content').hide('slow');
     var clickedId = $(this).attr('data-content');
     $('#' + clickedId).fadeIn('slow');
   });
   $('.main-nav .tab:first').click();
 };
 
+//Create teaser images for each of the blog posts 
+//(NOTE: They must be longer than one p)
+blogView.setTeasers = function () {
+  //hides all p's over 2
+  $('.blog-body *:nth-of-type(n+2)').hide();
+  $('.read-on').on('click', function() {
+    event.preventDefault();
+    $(this).siblings('.blog-body').children().show();
+    $('.read-on').hide();
+  });
+};
+
 blogView.populateFilters();
 blogView.handleAuthorFilter();
 blogView.handleCategoryFilter();
+blogView.handleMainNav();
