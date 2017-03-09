@@ -32,12 +32,9 @@ p {
   line-height: 140%;
 }
 
-.article-body {
-  padding: 20px 50px;
-}
-
-.article-body img {
-  max-width: 90%;
+/*this displays the blog bylines as inline-block*/
+address {
+  display: inline-block;
 }
 
 /*-------------

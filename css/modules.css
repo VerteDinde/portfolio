@@ -1,7 +1,6 @@
 /*-------------
 Navigation
 --------------*/
-
 .site-header ul {
   display: none;
   padding: 20px;
@@ -23,9 +22,25 @@ Navigation
 /*-------------
 Blog
 --------------*/
+/*removes original blog template; only new posts*/
+.tab-content {
+  padding: 20px 50px;
+}
+
+.article-body {
+  padding: 20px 50px;
+}
+
+.article-body img {
+  max-width: 90%;
+}
 
 .template {
   display: none;
+}
+
+.show-less {
+    display: none;
 }
 
 .byline {
