@@ -69,8 +69,15 @@ blogView.setTeasers = function () {
   $('.blog-body *:nth-of-type(n+2)').hide();
   $('.read-on').on('click', function() {
     event.preventDefault();
-    $(this).siblings('.blog-body').children().show();
-    $('.read-on').hide();
+    $(this).siblings('.blog-body').children().fadeIn('slow');
+    $(this).hide();
+    $('.show-less').show();
+  });
+  $('.show-less').on('click', function() {
+    event.preventDefault();
+    $(this).siblings('.blog-body').children('*:nth-of-type(n+2)').fadeOut('slow');
+    $(this).hide();
+    $('.read-on').show();
   });
 };
 
@@ -78,3 +85,4 @@ blogView.populateFilters();
 blogView.handleAuthorFilter();
 blogView.handleCategoryFilter();
 blogView.handleMainNav();
+blogView.setTeasers();
