@@ -42,8 +42,9 @@ Footer
   /*why does this work?*/
 }
 
-.social-list ul {
+ul.social-list {
   margin: 0px auto;
+  margin-left: -40px;
 }
 
 .social-list li {

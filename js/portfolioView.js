@@ -7,6 +7,13 @@
 //Event listener and handler for Main Nav tab showing and hiding
 //Only show first p
 
+//Added click handler for hamburger menu in here
+var menuAnimation = function() {
+  $('.icon-menu').on('click', function() {
+    $('.main-nav ul').slideToggle('fast');
+  })
+}
+
 //Configure a view object to hold the functions - still don't know why we're doing that
 var portfolioView = {};
 
@@ -14,12 +21,16 @@ var portfolioView = {};
 portfolioView.populateFilters = function() {
   $('article').each(function() {
     if (!$(this).hasClass('template')) {
-      var val = $(this).find('address a').text();
+      var val = $(this).attr('data-author');
+      console.log('Author Val:', val);
       var optionTag = `<option value="${val}">${val}</option>`;
-      $('#author-filter').append(optionTag);
+      if (!$(`#author-filter option[value="${val}"]`).length && val) {
+        $('#author-filter').append(optionTag);
+      }
 
       val = $(this).attr('data-category');
       optionTag = `<option value="${val}">${val}</option>`;
+      console.log('Category Val:', val);
       if ($(`#category-filter option[value="${val}"]`).length === 0) {
         $('#category-filter').append(optionTag);
       }
@@ -67,8 +78,8 @@ portfolioView.handleMainNav = function() {
 
 //Only show first p; Read more/Show less
 portfolioView.setTeasers = function() {
-  $('.portfolio-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2
-  $('#portfolio').on('click', 'a.read-on', function(event) {
+  $('.portfolio-body *:nth-of-type(n+2), .blog-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2
+  $('#portfolio, #blog').on('click', 'a.read-on', function(event) {
     event.preventDefault();
     $(this).parent().find('*').fadeIn('slow');
     $(this).hide();
@@ -76,13 +87,14 @@ portfolioView.setTeasers = function() {
   });
   $('.show-less').on('click', function() {
     event.preventDefault();
-    $(this).siblings('.portfolio-body').children('*:nth-of-type(n+2)').fadeOut('slow');
+    $(this).parent().find('*').find('*:nth-of-type(n+2)').fadeOut('slow');
     $(this).hide();
     $('.read-on').show();
   });
 };
 
 $(document).ready(function() {
+  menuAnimation();
   portfolioView.populateFilters();
   portfolioView.handleCategoryFilter();
   portfolioView.handleAuthorFilter();
