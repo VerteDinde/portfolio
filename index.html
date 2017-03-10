@@ -11,21 +11,6 @@
     <link rel="stylesheet" href="css/modules.css">
     <!--temporary favicon-->
     <link rel="icon" type="image/x-icon" href="https://i.imgur.com/7v5ASc8.png">
-    <script id="blog-template" type="text/x-handlebars-template">
-        <article data-category="{{category}}" data-author="{{author}}">
-            <header>
-                <h3>{{ title }}</h3>
-                <div class="byline">By
-                    <address><a href="{{authorUrl}}">{{author}}</a></address>
-                    <time pubdate datetime="2000-01-01">{{publishStatus}}</time>
-                </div>
-            </header>
-            <section class="blog-body">{{{ body }}}</section>
-            <!--why do we link to octomorph-->
-            <a href="#" class="read-on">Read on &rarr;</a>
-            <a href="#" class="show-less">Show less &rarr;</a>
-        </article>
-    </script>
     <script id="portfolio-template" type="text/x-handlebars-template">
         <article data-category="{{category}}" data-author="{{author}}">
             <header>
@@ -38,6 +23,21 @@
             <section class="portfolio-body">{{{ body }}}</section>
             <!--why do we link to octomorph-->
             <a href="#" class="read-on">Read on &rarr;</a>
+            <a href="#" class="show-less">Show less &rarr;</a>
+        </article>
+    </script>
+    <script id="blog-template" type="text/x-handlebars-template">
+        <article data-category="{{category}}" data-author="{{author}}">
+            <header>
+                <h3>{{ title }}</h3>
+                <div class="byline">
+                    <time pubdate datetime="2000-01-01">{{publishStatus}}</time>
+                </div>
+            </header>
+            <section class="blog-body">{{{ body }}}</section>
+            <!--why do we link to octomorph-->
+            <a href="#" class="read-on">Read on &rarr;</a>
+            <a href="#" class="show-less">Show less &rarr;</a>
         </article>
     </script>
 </head>

@@ -67,11 +67,18 @@ portfolioView.handleMainNav = function() {
 
 //Only show first p; Read more/Show less
 portfolioView.setTeasers = function() {
-  $('.article-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2
-  $('#articles').on('click', 'a.read-on', function(event) {
+  $('.portfolio-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2
+  $('#portfolio').on('click', 'a.read-on', function(event) {
     event.preventDefault();
     $(this).parent().find('*').fadeIn('slow');
     $(this).hide();
+    $('.show-less').show();
+  });
+  $('.show-less').on('click', function() {
+    event.preventDefault();
+    $(this).siblings('.portfolio-body').children('*:nth-of-type(n+2)').fadeOut('slow');
+    $(this).hide();
+    $('.read-on').show();
   });
 };
 
