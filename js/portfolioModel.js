@@ -37,7 +37,7 @@ portfolioData.sort(function(current, next) {
 
 //Function to push posts to array
 portfolioData.forEach(function(i) {
-  projects.push(new Post(i));
+  projects.push(new Project(i));
 });
 
 //Function append posts to DOM

@@ -32,7 +32,7 @@ portfolioView.handleAuthorFilter = function() {
   $('#author-filter').on('change', function() {
     if ($(this).val()) {
       $('article').hide();
-      $(`article[data-author-p="${$(this).val()}"]`).fadeIn();
+      $(`article[data-author="${$(this).val()}"]`).fadeIn();
     } else {
       $('article').fadeIn();
       $('article.template').hide();
@@ -70,7 +70,7 @@ portfolioView.setTeasers = function() {
   $('.article-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2
   $('#articles').on('click', 'a.read-on', function(event) {
     event.preventDefault();
-    $(this).parent().find('*').fadeIn();
+    $(this).parent().find('*').fadeIn('slow');
     $(this).hide();
   });
 };

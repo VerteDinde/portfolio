@@ -48,22 +48,22 @@
             <h1>I'm Keeley Hammond, and I'm a front-end Javascript developer living in Portland, OR.</h1>
             <div class="icon-menu"></div>
             <ul>
-                <a href="#home">
-                    <li class="tab" data-content="blog">Home</li>
+                <a href="#">
+                    <li class="tab" data-content="portfolio">Home</li>
                 </a>
-                <a href="#about">
+                <a href="#">
                     <li class="tab" data-content="about">About</li>
                 </a>
-                <a href="#portfolio">
+                <a href="#">
                     <li class="tab" data-content="portfolio">Portfolio</li>
                 </a>
-                <a href="#writing">
+                <a href="#">
                     <li class="tab" data-content="blog">Writing</li>
                 </a>
-                <a href="#speaking">
+                <a href="#">
                     <li class="tab" data-content="speaking">Speaking</li>
                 </a>
-                <a href="#contact">
+                <a href="#">
                     <li class="tab" data-content="contact">Contact</li>
                 </a>
             </ul>
@@ -98,16 +98,6 @@
         </section>
         <section id="blog" class="tab-content">
             <h2>Writing</h2>
-            <ul id="filters">
-                <li><select id="author-filter">
-                <option value="">-- Filter by Authors --</option>
-              </select>
-                </li>
-                <li><select id="category-filter">
-                <option value="">-- Filter by Categories --</option>
-              </select>
-                </li>
-            </ul>
         </section>
         <section id="speaking" class="tab-content">
             <h2>Speaking</h2>
@@ -145,11 +135,11 @@
         crossorigin="anonymous"></script>
             <!-- Note that Handlebars has been added as a dependency here -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
-    <script src="js/blogPosts.js"></script>
-    <script src="js/blog.js"></script>
-    <script src="js/blogView.js"></script>
     <script src="js/portfolioData.js"></script>
     <script src="js/portfolioModel.js"></script>
-    <!--<script src="js/portfolioView.js"></script>-->
+    <script src="js/portfolioView.js"></script>
+    <script src="js/blogPosts.js"></script>
+    <script src="js/blog.js"></script>
+    <!--<script src="js/blogView.js"></script>-->
 </body>
 </html>
