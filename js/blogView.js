@@ -4,6 +4,7 @@ var blogView = {};
 //Create method to populate filters at top of page
 //Input: Details from blog.js
 //Output: Populated filter categories appended to DOM
+//CHANGE 03-09: Removed old code and added template strings
 blogView.populateFilters = function () {
   $('article').not('.template').each(function () {
     //author filter
@@ -44,7 +45,8 @@ blogView.handleCategoryFilter = function() {
       var categoryName = $(this).val();
       $('article[data-category="' + categoryName + '"]').fadeIn('slow');
     } else {
-      $('article').not('.template').show('slow');
+      $('article').fadeIn();
+      $('article.template').hide();
     }
     $('#author-filter').val('');
   });
@@ -67,7 +69,7 @@ blogView.handleMainNav = function() {
 blogView.setTeasers = function () {
   //hides all p's over 2
   $('.blog-body *:nth-of-type(n+2)').hide();
-  $('.read-on').on('click', function() {
+  $('.read-on').on('click', function(event) {
     event.preventDefault();
     $(this).siblings('.blog-body').children().fadeIn('slow');
     $(this).hide();
@@ -81,8 +83,10 @@ blogView.setTeasers = function () {
   });
 };
 
-blogView.populateFilters();
-blogView.handleAuthorFilter();
-blogView.handleCategoryFilter();
-blogView.handleMainNav();
-blogView.setTeasers();
+$(document).ready(function () {
+  blogView.populateFilters();
+  blogView.handleAuthorFilter();
+  blogView.handleCategoryFilter();
+  blogView.handleMainNav();
+  blogView.setTeasers();
+});

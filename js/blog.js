@@ -15,21 +15,15 @@ function Post(blogPosts) {
   this.body = blogPosts.body;
 }
 
-// function creating jQuery object and printing to the DOM
+// function creating jQuery object and printing to the DOM; now using Handlebar.js
 // Output: creating a new node and appending to DOM
-// REMEMBER: Remove class element before returning, or you'll be exponentially creating nodes
 Post.prototype.toHtml = function () {
-  // clones template node; removes class, so we're not exponentially creating nodes
-  var $newPost = $('article.template').clone().removeClass('template');   
-  $newPost.find('h3:first').text(this.title);
-  $newPost.attr('data-category', this.category);
-  $newPost.attr('data-author', this.author);
-  $newPost.find('.byline a').text(this.author);
-  $newPost.find('.byline a').attr('href', this.authorUrl);
-  $newPost.find('time[pubdate]').attr('title', this.publishedOn);
-  $newPost.find('time').text(' | published ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago.');
-  $newPost.find('.blog-body').html(this.body);
-  return $newPost;
+  var source = $('#blog-template').html();
+  var template = Handlebars.compile(source);
+  this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
+  this.publishStatus = this.publishedOn ? `published ${this.daysAgo} days ago` : '(draft)'; //template string
+  var html = template(this);
+  return html;
 };
 
 blogPosts.sort(function(currentO, nextO) {
