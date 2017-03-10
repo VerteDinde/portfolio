@@ -46,7 +46,7 @@ portfolioView.handleCategoryFilter = function() {
   $('#category-filter').on('change', function() {
     if ($(this).val()) {
       $('article').hide();
-      $(`article[data-category-p="${$(this).val()}"]`).fadeIn();
+      $(`article[data-category="${$(this).val()}"]`).fadeIn();
     } else {
       $('article').fadeIn();
       $('article.template').hide();
@@ -72,7 +72,7 @@ portfolioView.setTeasers = function() {
     event.preventDefault();
     $(this).parent().find('*').fadeIn('slow');
     $(this).hide();
-    $('.show-less').show();
+    $('.show-less', this).show();
   });
   $('.show-less').on('click', function() {
     event.preventDefault();
