@@ -15,9 +15,9 @@
         <article data-category="{{category}}" data-author="{{author}}">
             <header>
                 <h3>{{title}}</h3>
-                <div class="byline">By
+                <div class="byline">GitHub Repo: 
                     <address><a href="{{authorUrl}}">{{author}}</a></address>
-                    <time pubdate datetime="2000-01-01">{{publishStatus}}</time>
+                    <time pubdate datetime="2000-01-01">| {{publishStatus}}</time>
                 </div>
             </header>
             <section class="portfolio-body">{{{ body }}}</section>
@@ -26,7 +26,7 @@
         </article>
     </script>
     <script id="blog-template" type="text/x-handlebars-template">
-        <article data-category="{{category}}">
+        <section>
             <header>
                 <h3>{{ title }}</h3>
                 <div class="byline">
@@ -36,7 +36,7 @@
             <section class="blog-body">{{{ body }}}</section>
             <a href="#" class="read-on">Read on &rarr;</a>
             <a href="#" class="show-less">Show less &rarr;</a>
-        </article>
+        </section>
     </script>
 </head>
 <body>
@@ -85,11 +85,11 @@
             <h2>Portfolio</h2>
             <ul id="filters">
                 <li><select id="author-filter">
-                <option value="">-- Filter by Authors --</option>
+                <option value="">-- All Projects --</option>
               </select>
                 </li>
                 <li><select id="category-filter">
-                <option value="">-- Filter by Categories --</option>
+                <option value="">-- All Categories --</option>
               </select>
                 </li>
             </ul>
@@ -135,7 +135,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src="js/portfolioData.js"></script>
     <script src="js/portfolioModel.js"></script>
-    <script src="js/portfolioView.js"></script>
+    <script src="js/sapView.js"></script>
     <script src="js/blogPosts.js"></script>
     <script src="js/blog.js"></script>
     <!--<script src="js/blogView.js"></script>-->

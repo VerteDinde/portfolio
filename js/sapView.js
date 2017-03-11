@@ -22,7 +22,6 @@ portfolioView.populateFilters = function() {
   $('article').each(function() {
     if (!$(this).hasClass('template')) {
       var val = $(this).attr('data-author');
-      console.log('Author Val:', val);
       var optionTag = `<option value="${val}">${val}</option>`;
       if (!$(`#author-filter option[value="${val}"]`).length && val) {
         $('#author-filter').append(optionTag);
@@ -30,8 +29,7 @@ portfolioView.populateFilters = function() {
 
       val = $(this).attr('data-category');
       optionTag = `<option value="${val}">${val}</option>`;
-      console.log('Category Val:', val);
-      if ($(`#category-filter option[value="${val}"]`).length === 0) {
+      if (!$(`#category-filter option[value="${val}"]`).length && val) {
         $('#category-filter').append(optionTag);
       }
     }
