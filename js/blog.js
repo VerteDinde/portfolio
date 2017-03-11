@@ -8,9 +8,6 @@ var posts = [];
 // Output: 'x' instances of blog posts from blogPosts array
 function Post(blogPosts) {
   this.title = blogPosts.title;
-  // this.category = blogPosts.category;
-  // this.author = blogPosts.author;
-  // this.authorUrl = blogPosts.author;
   this.publishedOn = blogPosts.publishedOn;
   this.body = blogPosts.body;
 }

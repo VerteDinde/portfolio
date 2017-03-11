@@ -8,10 +8,6 @@ Navigation
   text-align: center;
 }
 
-.main-nav:hover ul {
-  display: block;
-}
-
 .main-nav a{
   color: white;
 }
