@@ -91,11 +91,49 @@ portfolioView.setTeasers = function() {
   });
 };
 
+// NEW: Mon, March 13. Pull from object and JSON.
+portfolioView.initNewArticlePage = function() {
+  $('.tab-content').show();
+  $('#export-field').hide();
+  $('#article-json').on('focus', function(){
+    this.select();
+  });
+
+  $('#new-form').on('change', 'input, textarea', portfolioView.create);
+};
+
+portfolioView.create = function() {
+  let project;
+  $('#portfolio').empty();
+
+  project = new Project({
+    title: $('#portfolio-title').val(),
+    author: $('#portfolio-author').val(),
+    authorUrl: $('#portfolio-author-url').val(),
+    category: $('#portfolio-category').val(),
+    body: $('#portfolio-body').val(),
+    publishedOn: $('#portfolio-published:checked').length ? new Date() : null
+  });
+
+  $('#portfolio').append(article.toHtml());
+  //what is pre code?
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+};
+
+
+portfolioView.initIndexPage = function() {
+  Project.all.forEach(function(a) {
+    $('#portfolio').append(a.toHtml())
+  });
+};
+
 $(document).ready(function() {
   menuAnimation();
+});
   portfolioView.populateFilters();
   portfolioView.handleCategoryFilter();
   portfolioView.handleAuthorFilter();
   portfolioView.handleMainNav();
   portfolioView.setTeasers();
-});

@@ -7,9 +7,6 @@
 //Function to push posts to array
 //Function append posts to DOM
 
-//Declare array for sorted portfolio projects (default sorting)
-var projects = [];
-
 //Create model constructor for portfolioData
 function Project(portfolioData) {
   this.title = portfolioData.title;
@@ -19,6 +16,9 @@ function Project(portfolioData) {
   this.publishedOn = portfolioData.publishedOn;
   this.body = portfolioData.body;
 }
+
+//Declare array for sorted portfolio projects (default sorting)
+Project.all = [];
 
 //Create prototype function, using Handlebars.js
 Project.prototype.toHtml = function () {
@@ -30,17 +30,33 @@ Project.prototype.toHtml = function () {
   return html;
 };
 
-//Write sort function to put data in chronological order
-portfolioData.sort(function(current, next) {
-  return (new Date(next.publishedOn)) - (new Date(current.publishedOn));
-});
-
-//Function to push posts to array
-portfolioData.forEach(function(i) {
-  projects.push(new Project(i));
-});
-
 //Function append posts to DOM
-projects.forEach(function(project) {
-  $('#portfolio').append(project.toHtml());
-});
+Project.loadAll = function(rawData) {
+  rawData.sort(function(a,b) {
+    return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
+  });
+
+  rawData.forEach(function(i) {
+    Project.all.push(new Project(i));
+  })
+};
+
+Project.fetchAll = function() {
+  if (localStorage.rawData) {
+    var parsedData = JSON.parse(localStorage.rawData);
+    Project.loadAll(parsedData);
+    portfolioView.initIndexPage();
+  } else {
+    $.ajax({
+      url: 'data/portfolio-data.json',
+      method: 'GET',
+      success: function(data) {
+        localStorage.setItem('rawData', data);
+        Project.fetchAll();
+      }, 
+      error: function(err) {
+        console.log('in error handler', err);
+      }
+    });
+  }
+}
