@@ -51,7 +51,8 @@ Project.fetchAll = function() {
       url: 'data/portfolio-data.json',
       method: 'GET',
       success: function(data) {
-        localStorage.setItem('rawData', data);
+        var rawDataJSON = JSON.stringify(data)
+        localStorage.setItem('rawData', rawDataJSON);
         Project.fetchAll();
       }, 
       error: function(err) {
