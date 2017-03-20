@@ -1,12 +1,5 @@
 'use strict';
 
-//Configure a view object to hold the functions - still don't know why we're doing that
-//Method to populate filters
-//Event listener and handler for Author
-//Event listener and handler for Category
-//Event listener and handler for Main Nav tab showing and hiding
-//Only show first p
-
 //Added click handler for hamburger menu in here
 var menuAnimation = function() {
   $('.icon-menu').on('click', function() {
@@ -70,7 +63,6 @@ portfolioView.handleMainNav = function() {
     $('.tab-content').hide();
     $('#' + $(this).data('content')).fadeIn();
   });
-
   $('.main-nav .tab:first').click(); // Let's now trigger a click on the first .tab element, to set up the page.
 };
 
@@ -124,16 +116,11 @@ portfolioView.create = function() {
 
 
 portfolioView.initIndexPage = function() {
-  Project.all.forEach(function(a) {
-    $('#portfolio').append(a.toHtml())
-  });
-};
-
-$(document).ready(function() {
+  Project.all.forEach(a => $('#portfolio').append(a.toHtml()));
   menuAnimation();
-});
   portfolioView.populateFilters();
   portfolioView.handleCategoryFilter();
   portfolioView.handleAuthorFilter();
   portfolioView.handleMainNav();
   portfolioView.setTeasers();
+};

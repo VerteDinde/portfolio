@@ -49,7 +49,7 @@ app.get('/portfolio', function (request, response) {
 app.post('/portfolio', function(request, response) {
   client.query(
     `INSERT INTO
-    articles(title, author, "authorURL", category,"publishedOn", body)
+    portfolio(title, author, "authorURL", category,"publishedOn", body)
     VALUES ($1, $2, $3, $4, $5, $6);`,
     [
       request.body.title,
@@ -71,7 +71,7 @@ app.post('/portfolio', function(request, response) {
 // Updates the articles
 app.put('portfolio/:id', function(request, response) {
   client.query(
-    `UPDATE articles
+    `UPDATE portfolio
     SET title=$1, author=$2, "authorURL"=$3, category=$4, "publishedOn"=$5, body=$6
     WHERE article_id=$7;`,
     [
@@ -92,10 +92,10 @@ app.put('portfolio/:id', function(request, response) {
   })
 });
 
-// Delete one specific article by id
-app.delete('/articles/:id', function(request, response) {
+// Delete one specific project by id
+app.delete('/portfolio/:id', function(request, response) {
   client.query(
-    `DELETE FROM articles WHERE article_id=$1;`,
+    `DELETE FROM portfolio WHERE portfolio_id=$1;`,
     [request.params.id]
   )
   .then(function() {
@@ -107,9 +107,9 @@ app.delete('/articles/:id', function(request, response) {
 });
 
 // Delete the entire database
-app.delete('/articles', function(request, response) {
+app.delete('/portfolio', function(request, response) {
   client.query(
-    'DELETE FROM articles;'
+    'DELETE FROM portfolio;'
   )
   .then(function() {
     response.send('Delete complete')
@@ -129,14 +129,14 @@ app.listen(PORT, function () {
 
 //////// ** DATABASE LOADER ** ////////
 function loadArticles() {
-  client.query('SELECT COUNT(*) FROM articles')
+  client.query('SELECT COUNT(*) FROM portfolio')
     .then(results => {
       if (!parseInt(result.rows[0].count)) {
         fs.readFile('.public/data/portfolio-data.json', (err, fd) => {
           JSON.parse(fd.toString()).forEach(ele => {
             client.query(`
             INSERT INTO
-            articles(title, author, "authorURL", category,"publishedOn", body)
+            portfolio(title, author, "authorURL", category,"publishedOn", body)
             VALUES ($1, $2, $3, $4, $5, $6);`,
             [ele.title, ele.author, ele.authorURL, ele.category, ele.publishedOn, ele.body]
             )
@@ -148,8 +148,8 @@ function loadArticles() {
 
 function loadDB() {
   client.query(`
-  CREATE TABLE IF NOT EXISTS articles (
-    article id SERIAL PRIMARY KEY,
+  CREATE TABLE IF NOT EXISTS portfolio (
+    portfolio id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     author VARCHAR(255) NOT NULL,
     "authorURL" VARCHAR (255),
