@@ -8,13 +8,8 @@
 //Function append posts to DOM
 
 //Create model constructor for portfolioData
-function Project(portfolioData) {
-  this.title = portfolioData.title;
-  this.category = portfolioData.category;
-  this.author = portfolioData.author;
-  this.authorUrl = portfolioData.authorUrl;
-  this.publishedOn = portfolioData.publishedOn;
-  this.body = portfolioData.body;
+function Project(data) {
+  Object.keys(data).forEach(ele => (this[ele] = data[ele]));
 }
 
 //Declare array for sorted portfolio projects (default sorting)
@@ -26,38 +21,70 @@ Project.prototype.toHtml = function () {
   var template = Handlebars.compile(source);
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
   this.publishStatus = this.publishedOn ? `published ${this.daysAgo} days ago` : '(draft)'; //ternery operator
-  var html = template(this);
-  return html;
+  // this.body = marked(this.body);
+  return template(this);
 };
 
-//Function append posts to DOM
-Project.loadAll = function(rawData) {
-  rawData.sort(function(a,b) {
-    return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
-  });
+// Function append posts to DOM
+Project.loadAll = rawData => {
+  console.log(rawData);
+  rawData.sort((a,b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)));
 
-  rawData.forEach(function(i) {
-    Project.all.push(new Project(i));
-  })
+  Project.all = rawData.map(ele => new Project(ele));
 };
 
-Project.fetchAll = function() {
-  if (localStorage.rawData) {
-    var parsedData = JSON.parse(localStorage.rawData);
-    Project.loadAll(parsedData);
-    portfolioView.initIndexPage();
-  } else {
-    $.ajax({
-      url: 'data/portfolio-data.json',
-      method: 'GET',
-      success: function(data) {
-        var rawDataJSON = JSON.stringify(data)
-        localStorage.setItem('rawData', rawDataJSON);
-        Project.fetchAll();
-      }, 
-      error: function(err) {
-        console.log('in error handler', err);
-      }
-    });
-  }
+// Fetches initial database contents from postgres and populates index.html
+Project.fetchAll = callback => {
+  $.get('/portfolio')
+  .then(
+    results => {
+      Project.loadAll(results);
+      callback();
+    }
+  ).catch(console.error);
 }
+
+// Deletes the entire table
+Project.truncateTable = callback => {
+  $.ajax({
+    url: '/portfolio',
+    method: 'DELETE'
+  })
+  .then(console.log)
+  .then(callback);
+};
+
+// Allows insertion of a new project
+Project.prototype.insertRecord = function(callback) {
+  $.post('/portfolio', {author: this.author, authorUrl: this.authorUrl, body: this.body, category: this.category, publishedOn: this.publishedOn, title: this.title})
+  .then(console.log)
+  .then(callback);
+};
+
+// Deletes one project
+Project.prototype.deleteRecord = function(callback) {
+  $.ajax({
+    url: `/portfolio/${this.portfolio_id}`,
+    method: 'DELETE'
+  })
+  .then(console.log)
+  .then(callback);
+};
+
+// Updates a project
+Project.prototype.updateRecord = function(callback) {
+  $.ajax({
+    url: `/portfolio/${this.portfolio_id}`,
+    method: 'PUT',
+    data: {
+      author: this.author,
+      authorUrl: this.authorUrl,
+      body: this.body,
+      category: this.category,
+      publishedOn: this.publishedOn,
+      title: this.title,
+    }
+  })
+  .then(console.log)
+  .then(callback);
+};

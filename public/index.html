@@ -15,7 +15,7 @@
         <article data-category="{{category}}" data-author="{{author}}">
             <header>
                 <h3>{{title}}</h3>
-                <div class="byline">GitHub Repo: 
+                <div class="byline">GitHub Repo:
                     <address><a href="{{authorUrl}}">{{author}}</a></address>
                     <time pubdate datetime="2000-01-01">| {{publishStatus}}</time>
                 </div>
@@ -39,6 +39,7 @@
         </section>
     </script>
 </head>
+
 <body>
     <header class="site-header clearfix">
         <nav class="main-nav">
@@ -100,8 +101,12 @@
         <section id="speaking" class="tab-content">
             <h2>Speaking</h2>
             <h4>I love public speaking.</h4>
-            <p>I started my career in marketing and advertising, and developed the public speaking chops to excel in it. I've been speaking publicly and delivering presentations to executive teams for almost eight years, and have enjoyed every second of it.</p>
-            <p>I have a strong educational background, both as an instructor and with curriculum development. I have experience covering beginning and advanced programming topics, among others. I love teaching workshops in addition to speaking, and am comfortable both with creating my own materials and teaching using an established deck.</p>
+            <p>I started my career in marketing and advertising, and developed the public speaking chops to excel in it. I've
+                been speaking publicly and delivering presentations to executive teams for almost eight years, and have enjoyed
+                every second of it.</p>
+            <p>I have a strong educational background, both as an instructor and with curriculum development. I have experience
+                covering beginning and advanced programming topics, among others. I love teaching workshops in addition to
+                speaking, and am comfortable both with creating my own materials and teaching using an established deck.</p>
             <p>Interested? Email me! To see my previous talks, <a href="https://speakerdeck.com/keeleyhammond">view my Speaker Deck here.</a></p>
         </section>
         <section id="contact" class="tab-content">
@@ -130,14 +135,14 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
-            <!-- Note that Handlebars has been added as a dependency here -->
+    <!-- Note that Handlebars has been added as a dependency here -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src="js/portfolioModel.js"></script>
     <script src="js/sapView.js"></script>
     <script src="js/blogPosts.js"></script>
     <script src="js/blog.js"></script>
     <script>
-        Project.fetchAll();
+        Project.fetchAll(portfolioView.initIndexPage);
     </script>
 </body>
 </html>

@@ -1,12 +1,5 @@
 'use strict';
 
-//Configure a view object to hold the functions - still don't know why we're doing that
-//Method to populate filters
-//Event listener and handler for Author
-//Event listener and handler for Category
-//Event listener and handler for Main Nav tab showing and hiding
-//Only show first p
-
 //Added click handler for hamburger menu in here
 var menuAnimation = function() {
   $('.icon-menu').on('click', function() {
@@ -14,7 +7,7 @@ var menuAnimation = function() {
   })
 }
 
-//Configure a view object to hold the functions - still don't know why we're doing that
+//Configure a view object to hold the functions
 var portfolioView = {};
 
 //Method to populate filters
@@ -70,7 +63,6 @@ portfolioView.handleMainNav = function() {
     $('.tab-content').hide();
     $('#' + $(this).data('content')).fadeIn();
   });
-
   $('.main-nav .tab:first').click(); // Let's now trigger a click on the first .tab element, to set up the page.
 };
 
@@ -91,14 +83,13 @@ portfolioView.setTeasers = function() {
   });
 };
 
-// NEW: Mon, March 13. Pull from object and JSON.
-portfolioView.initNewArticlePage = function() {
+// Pull from object and JSON.
+portfolioView.initNewProjectPage = function() {
   $('.tab-content').show();
   $('#export-field').hide();
   $('#article-json').on('focus', function(){
     this.select();
   });
-
   $('#new-form').on('change', 'input, textarea', portfolioView.create);
 };
 
@@ -116,7 +107,6 @@ portfolioView.create = function() {
   });
 
   $('#portfolio').append(article.toHtml());
-  //what is pre code?
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
@@ -124,16 +114,11 @@ portfolioView.create = function() {
 
 
 portfolioView.initIndexPage = function() {
-  Project.all.forEach(function(a) {
-    $('#portfolio').append(a.toHtml())
-  });
-};
-
-$(document).ready(function() {
+  Project.all.forEach(a => $('#portfolio').append(a.toHtml()));
   menuAnimation();
-});
   portfolioView.populateFilters();
   portfolioView.handleCategoryFilter();
   portfolioView.handleAuthorFilter();
   portfolioView.handleMainNav();
   portfolioView.setTeasers();
+};
