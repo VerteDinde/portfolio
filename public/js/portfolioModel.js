@@ -34,7 +34,7 @@ Project.loadAll = rawData => {
 
 // Fetches initial database contents from postgres and populates index.html
 Project.fetchAll = callback => {
-  $.get(`ajax-data`)
+  $.get('/portfolio')
   .then(
     results => {
       Project.loadAll(results);
@@ -63,7 +63,7 @@ Project.prototype.insertRecord = function(callback) {
 // Deletes one project
 Project.prototype.deleteRecord = function(callback) {
   $.ajax({
-    url: `/portfolio/${this.article_id}`,
+    url: `/portfolio/${this.portfolio_id}`,
     method: 'DELETE'
   })
   .then(console.log)
@@ -73,7 +73,7 @@ Project.prototype.deleteRecord = function(callback) {
 // Updates a project
 Project.prototype.updateRecord = function(callback) {
   $.ajax({
-    url: `/portfolio/${this.article_id}`,
+    url: `/portfolio/${this.portfolio_id}`,
     method: 'PUT',
     data: {
       author: this.author,
@@ -82,7 +82,6 @@ Project.prototype.updateRecord = function(callback) {
       category: this.category,
       publishedOn: this.publishedOn,
       title: this.title,
-      author_id: this.author_id
     }
   })
   .then(console.log)
