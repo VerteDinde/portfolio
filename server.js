@@ -7,9 +7,9 @@ const fs = require('fs'); //what does this line do?
 const express = require('express');
 const app = express();
 
-// NEW 03-19: Require in body-parser for post requests in our server - what is this and why do it?
-const bodyParser = require('body-parser');
+// Require in body-parser for post requests in our server - what is this and why do it?
 // set PORT to either user environment or 3000
+const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 console.log(process.env);
 
@@ -35,7 +35,7 @@ app.get('/', function (request, response) {
 
 // Routes for making API calls to use CRUD operations on DB
 app.get('/portfolio', function (request, response) {
-  client.query('SELECT * FROM articles')
+  client.query('SELECT * FROM portfolio')
     .then(function (results) {
       response.send(results.rows);
     })
