@@ -3,8 +3,7 @@
 // ran 'npm init'
 // require express and set it to 'app'
 const pg = require('pg');
-//what does this line do?
-const fs = require('fs');
+const fs = require('fs'); //what does this line do?
 const express = require('express');
 const app = express();
 
@@ -37,8 +36,8 @@ app.get('/', function (request, response) {
 // Routes for making API calls to use CRUD operations on DB
 app.get('/portfolio', function (request, response) {
   client.query('SELECT * FROM articles')
-    .then(function (result) {
-      response.send(results.row);
+    .then(function (results) {
+      response.send(results.rows);
     })
     .catch(function (err) {
       console.log(err);
@@ -131,8 +130,9 @@ app.listen(PORT, function () {
 function loadArticles() {
   client.query('SELECT COUNT(*) FROM portfolio')
     .then(results => {
-      if (!parseInt(result.rows[0].count)) {
-        fs.readFile('.public/data/portfolio-data.json', (err, fd) => {
+      if (!parseInt(results.rows[0].count)) {
+        fs.readFile('./public/data/portfolio-data.json', (err, fd) => {
+          if (err) return console.error(err);
           JSON.parse(fd.toString()).forEach(ele => {
             client.query(`
             INSERT INTO
@@ -149,7 +149,7 @@ function loadArticles() {
 function loadDB() {
   client.query(`
   CREATE TABLE IF NOT EXISTS portfolio (
-    portfolio id SERIAL PRIMARY KEY,
+    portfolio_id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     author VARCHAR(255) NOT NULL,
     "authorURL" VARCHAR (255),

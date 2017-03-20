@@ -9,7 +9,7 @@
 
 //Create model constructor for portfolioData
 function Project(data) {
-  Object.keys(opts).forEach(ele => this[ele] = data[ele]);
+  Object.keys(data).forEach(ele => (this[ele] = data[ele]));
 }
 
 //Declare array for sorted portfolio projects (default sorting)
@@ -21,12 +21,13 @@ Project.prototype.toHtml = function () {
   var template = Handlebars.compile(source);
   this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
   this.publishStatus = this.publishedOn ? `published ${this.daysAgo} days ago` : '(draft)'; //ternery operator
-  this.body = marked(this.body);
+  // this.body = marked(this.body);
   return template(this);
 };
 
 // Function append posts to DOM
 Project.loadAll = rawData => {
+  console.log(rawData);
   rawData.sort((a,b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)));
 
   Project.all = rawData.map(ele => new Project(ele));

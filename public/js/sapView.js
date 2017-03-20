@@ -7,7 +7,7 @@ var menuAnimation = function() {
   })
 }
 
-//Configure a view object to hold the functions - still don't know why we're doing that
+//Configure a view object to hold the functions
 var portfolioView = {};
 
 //Method to populate filters
@@ -83,14 +83,13 @@ portfolioView.setTeasers = function() {
   });
 };
 
-// NEW: Mon, March 13. Pull from object and JSON.
-portfolioView.initNewArticlePage = function() {
+// Pull from object and JSON.
+portfolioView.initNewProjectPage = function() {
   $('.tab-content').show();
   $('#export-field').hide();
   $('#article-json').on('focus', function(){
     this.select();
   });
-
   $('#new-form').on('change', 'input, textarea', portfolioView.create);
 };
 
@@ -108,7 +107,6 @@ portfolioView.create = function() {
   });
 
   $('#portfolio').append(article.toHtml());
-  //what is pre code?
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
