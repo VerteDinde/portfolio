@@ -57,15 +57,6 @@ portfolioView.handleCategoryFilter = function() {
   });
 };
 
-//Event listener and handler for Main Nav tab showing and hiding
-portfolioView.handleMainNav = function() {
-  $('.main-nav').on('click', '.tab', function() {
-    $('.tab-content').hide();
-    $('#' + $(this).data('content')).fadeIn();
-  });
-  $('.main-nav .tab:first').click(); // Let's now trigger a click on the first .tab element, to set up the page.
-};
-
 //Only show first p; Read more/Show less
 portfolioView.setTeasers = function() {
   $('.portfolio-body *:nth-of-type(n+2), .blog-body *:nth-of-type(n+2)').hide(); // Hide elements beyond the first 2
@@ -119,6 +110,5 @@ portfolioView.initIndexPage = function() {
   portfolioView.populateFilters();
   portfolioView.handleCategoryFilter();
   portfolioView.handleAuthorFilter();
-  portfolioView.handleMainNav();
   portfolioView.setTeasers();
 };
