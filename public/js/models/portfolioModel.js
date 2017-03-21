@@ -27,7 +27,6 @@ Project.prototype.toHtml = function () {
 
 // Function append posts to DOM
 Project.loadAll = rawData => {
-  console.log(rawData);
   rawData.sort((a,b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)));
 
   Project.all = rawData.map(ele => new Project(ele));
