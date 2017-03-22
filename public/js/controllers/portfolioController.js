@@ -5,6 +5,9 @@
     portfolioController.render = function() {
         $('.tab-content').hide();
         $('#portfolio').fadeIn();
+        
+        // pull repos from GitHub API
+        repos.requestRepos(repoView.index);
     }
     module.portfolioController = portfolioController;
 })(window);
