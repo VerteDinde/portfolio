@@ -5,11 +5,9 @@
     portfolioController.render = function() {
         $('.tab-content').hide();
         $('#portfolio').fadeIn();
-        $('.main-nav').on('click', '.tab', function() {
-            $('.tab-content').hide();
-            $(`#${$(this).data('content')}`).fadeIn();
-        });
-        $('.main-nav .tab:first').click();
+        
+        // pull repos from GitHub API
+        repos.requestRepos(repoView.index);
     }
     module.portfolioController = portfolioController;
 })(window);

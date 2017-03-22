@@ -105,7 +105,7 @@ portfolioView.create = function() {
 
 
 portfolioView.initIndexPage = function() {
-  Project.all.forEach(a => $('#portfolio').append(a.toHtml()));
+  Project.all.forEach(a => $('#repo-list').before(a.toHtml()));
   menuAnimation();
   portfolioView.populateFilters();
   portfolioView.handleCategoryFilter();

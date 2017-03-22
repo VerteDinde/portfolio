@@ -38,8 +38,19 @@
             <a href="#" class="show-less">Show less &rarr;</a>
         </section>
     </script>
+    <script id="repo-template" type="text/x-handlebars-template">
+      <li>
+        <a href="{{url}}" target="_blank"><h3>{{name}}</h3></a>
+        <p>Description: {{description}}</p>
+        <p>Language: {{language}}</p>
+        <p>Created: {{created}}</p>
+        <p>Last updated: {{updated}}</p>
+        {{#if watchers_count}}
+          <p>{{watchers_count}} watching this repo</p>
+        {{/if}}
+      </li>
+    </script>
 </head>
-
 <body>
     <header class="site-header clearfix">
         <nav class="main-nav">
@@ -94,6 +105,9 @@
               </select>
                 </li>
             </ul>
+            <ul id="repo-list">
+            <h3>Want to see more of my work? All of my Github Repos are here:</h3>
+            </ul>
         </section>
         <section id="blog" class="tab-content">
             <h2>Writing</h2>
@@ -137,11 +151,14 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
-    <script src="js/portfolioModel.js"></script>
-    <script src="js/portfolioView.js"></script>
-    <script src="js/blogPosts.js"></script>
-    <script src="js/blog.js"></script>
-    <script src="js/portfolioController.js"></script>
+    <script src="js/models/githubToken.js"></script>
+    <script src="js/models/portfolioModel.js"></script>
+    <script src="js/views/portfolioView.js"></script>
+    <script src="js/views/blogPosts.js"></script>
+    <script src="js/models/blog.js"></script>
+    <script src="js/models/repos.js"></script>
+    <script src="js/controllers/repoView.js"></script>
+    <script src="js/controllers/portfolioController.js"></script>
     <script>
         Project.fetchAll(portfolioView.initIndexPage);
     </script>
