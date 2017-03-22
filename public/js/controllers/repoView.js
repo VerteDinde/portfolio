@@ -7,7 +7,7 @@
   const ui = function() {
     let $repoList = $('#portfolio'); // Best practice: Cache the DOM query if it's used more than once.
 
-    $repoList.find('article ul').empty();
+    $repoList.find('#repo-list').empty();
     $repoList.show();
   };
 
@@ -23,7 +23,7 @@
   repoView.index = function() {
     ui();
     // The jQuery `append` method lets us append an entire array of HTML elements at once:
-    $('#portfolio article ul').append(
+    $('#repo-list').append(
       repos.with('name').map(render) // Want to filter by a different property other than name?
     );
   };
