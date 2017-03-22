@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 console.log(process.env);
 
 // Connection string for postgres database
-const conString = 'postgres://localhost:5432';
+const conString = process.env.HEROKU_POSTGRESQL_WHITE_URL || 'postgres://localhost:5432';
 
 // Pass conString to pg, which creates new client object
 const client = new pg.Client(conString);
